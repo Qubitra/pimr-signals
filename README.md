@@ -10,27 +10,21 @@ This is the first phase of the project to build a mean-reversion signal engine g
 src/
 ├── pimr/                 the importable package
 │   ├── data/             market-data loaders + bar aggregation
-│   │   ├── glbx_csv.py   load_GLBX                      (from tests/gold_data.py)
-│   │   ├── bars.py       build_ohlc, build_mid          (from tests/gold_data.py)
-│   │   ├── dbn.py        load_dbn, load_dbn_many,       (from tests/dbn_data.py;
-│   │   │                 most_traded_instrument          needs databento-dbn)
-│   │   └── csv_io.py     save_csv, load_csv             (from tests/csv_manager.py)
+│   │   ├── glbx_csv.py   load_GLBX                      
+│   │   ├── bars.py       build_ohlc, build_mid          
+│   │   ├── dbn.py        load_dbn, load_dbn_many,       
+│   │   └── csv_io.py     save_csv, load_csv             
 │   ├── filters/
-│   │   ├── hp.py               hp_filter                (from tests/hp_filter.py)
-│   │   ├── l1_trend.py         l1t_filter_cvxpy, lambda_max,
-│   │   │                       linear_segment_lengths   (from tests/l1t_filter.py)
-│   │   ├── l1_trend_scipy.py   l1_trend_filter_scipy    (from tests/l1tf_scipy.py.txt)
-│   │   └── rolling_median.py   rolling_median_mad       (from tests/median.py)
+│   │   ├── hp.py               hp_filter               
+│   │   ├── l1_trend.py         l1t_filter_cvxpy, lambda_max, linear_segment_lengths   
+│   │   ├── l1_trend_scipy.py   l1_trend_filter_scipy    
+│   │   └── rolling_median.py   rolling_median_mad       
 │   ├── indicators/
-│   │   ├── moving_averages.py  SMA, EMA, EMA_fast       (from tests/relative_strength_index.py)
+│   │   ├── moving_averages.py  SMA, EMA, EMA_fast    
 │   │   └── rsi.py              gains_and_losses, RS, RSI, rsi
-│   ├── synthetic/
-│   │   ├── random_walk_book.py generate_simple_l1_book  (from tests/synthetic_data.py)
-│   │   └── ou_book.py          generate_synthetic_l1_book etc.
-│   │                                                    (from tests/synthetic_l1_data.txt,
-│   │                                                     ported torch -> numpy)
+│   │                                                   
 │   └── physics/
-│       └── oscillator.py       simulate, FE, BE, RK2    (from tests/physical_oscillator_simulation.py)
+│       └── oscillator.py       simulate, FE, BE, RK2   
 │
 ├── scripts/              runnable demos (the old __main__ blocks), all argparse-based
 │   ├── plot_gold_candles.py    candles + mid line from a GLBX CSV
@@ -41,12 +35,11 @@ src/
 │   ├── plot_lambda_sweep.py    L1 trends for 0.33x..3x lambda
 │   ├── plot_segment_hist.py    L1 segment-length histogram over many days
 │   ├── demo_synthetic_book.py  random-walk book + rolling median/MAD
-│   ├── demo_ou_book.py         OU book demo
 │   └── demo_oscillator.py      solve_ivp vs FE/BE/RK2
 │
 └── experiments/          prototypes, not part of the package
-    ├── l1tf_interior_point.py  hand-rolled IPM L1 trend filter (from tests/tess.py)
-    └── random_arrays.py        random trend generators (from tests/random_plot.py.txt)
+    ├── l1tf_interior_point.py  hand-rolled IPM L1 trend filter 
+    └── 
 ```
 
 ## Running (in progress)

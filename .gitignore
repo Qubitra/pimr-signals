@@ -6,6 +6,7 @@ build/
 dist/
 .venv/
 venv/
+.env
 .ipynb_checkpoints/
 
 # Tooling caches
@@ -30,7 +31,7 @@ data/*
 !data/fixtures/
 *.dbn.zst
 *.dbn
-tests/*.csv
+*.csv
 tests/*.png
 scripts/*.png
 
