@@ -1,0 +1,48 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── ML / experiment artifacts ───────────────────────────
+runs/
+artifacts/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+wandb/
+mlruns/
+
+# ── Data / Output ────────────────────────────────────────────────
+data/*
+!data/fixtures/
+*.dbn.zst
+*.dbn
+tests/*.csv
+tests/*.png
+scripts/*.png
+
+# ── Secrets / local config ──────────────────────────────
+*.local.toml
+
+# ── OS noise ────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Editors ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
