@@ -1,0 +1,22 @@
+[project]
+name = "pimr"
+version = "0.1.0"
+description = "Physics-informed market signal detection via mean reversion"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.14",
+    "matplotlib>=3.9",
+    "cvxpy[CVXOPT]>=1.5"
+    "databento-dbn>=0.60",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel",
+    "pytest",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
