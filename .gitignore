@@ -43,6 +43,9 @@ scripts/*.png
 Thumbs.db
 Desktop.ini
 
+# ── Experiments ────────────────────────────────────────────────
+experiments
+
 # ── Editors ─────────────────────────────────────────────
 .vscode/
 .idea/
