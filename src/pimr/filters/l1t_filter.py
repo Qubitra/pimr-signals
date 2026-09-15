@@ -8,7 +8,7 @@ import numpy as np
 import scipy.sparse as sp
 
 
-def l1t_filter_cvxpy(y, lambda_param=50.0, solver=cp.ECOS):
+def l1tf_cvxpy(y, lambda_param=50.0, solver=cp.ECOS):
     """
     Apply L1 trend filtering to a time series using convex optimization. Minimizing the convex optimization problem:
         MIN: 0.5 * ||y - x||^2 + lambda * ||D^2 x||_1
