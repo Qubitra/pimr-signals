@@ -5,7 +5,7 @@ Rolling median and median-absolute-deviation (MAD) estimator.
 import numpy as np
 
 
-def rolling_median_mad(prices, window=20):
+def median_mad(prices, window=20):
     """
     Estimate the typical price level of a price series using only the
     rolling median and the rolling median absolute deviation (MAD). For each point the trailing ``window`` samples (expanding at the start of the series) are summarised by their median and by the MAD around the median.
