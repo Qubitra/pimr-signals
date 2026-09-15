@@ -69,7 +69,7 @@ def lambda_max(y):
     return float(np.max(np.abs(z)))
 
 
-def linear_segment_lengths(trend, tol=None, return_knots=False):
+def l1_lengths(trend, tol=None, return_knots=False):
     """
     Compute the length of each linear segment of a piecewise linear trend (e.g. the output of l1t_filter_cvxpy). The l1 penalty on ||D^2 x||_1 makes the second difference of the trend exactly zero inside a segment and non-zero only at the kink (knot) points, so segments are recovered by locating second differences above a small tolerance (the solver returns an approximate solution, so exact zeros come back as numerical noise).
     Parameters
