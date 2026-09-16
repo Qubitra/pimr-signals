@@ -35,6 +35,7 @@ data/*
 tests/*.png
 scripts/*.png
 
+
 # ── Secrets / local config ──────────────────────────────
 *.local.toml
 
@@ -43,8 +44,8 @@ scripts/*.png
 Thumbs.db
 Desktop.ini
 
-# ── Experiments ────────────────────────────────────────────────
-experiments
+# ── Experimental scripts ────────────────────────────────────────────────
+experiments/
 
 # ── Editors ─────────────────────────────────────────────
 .vscode/
