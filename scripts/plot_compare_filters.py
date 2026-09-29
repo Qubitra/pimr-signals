@@ -1,73 +1,55 @@
-"""Compare trend filters on gold GLBX candles: rolling median vs. HP vs. L1.
+"""
+Compare trend filters on gold GLBX candles: rolling median vs. HP vs. L1.
 
 Three panels: candles, the three trend estimates over the mid price, and the
 cyclical (detrended) components of each filter.
 
-Extracted from tests/comparison.py.
-
 Usage:
-    python scripts/compare_filters.py [path/to/data.csv] [--out fig.png]
+    python scripts/compare_filters.py path/to/data.dbn.zst [--out fig.png]
 """
 
 import argparse
 import sys
 from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # until pimr is pip-installed
-
 import matplotlib.pyplot as plt
 import numpy as np
 
+## DEVELOPMENT: Until pimr is pip-installed use the following:
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]/"src"))  
+
 from pimr.data import build_mid, build_ohlc
-from pimr.data.dbn import load_dbn_many, most_traded_instrument
+from pimr.data.dbn import load_dbn
 from pimr.filters import hp_filter, l1tf_cvxpy, lambda_max, median_mad
 
-DEFAULT_CSV = "/Users/arash/Qubitra/2023-07-14_2023-07-15/GLBX-20260718-CWTFHWMKGY/test-gold-data.csv"
-DEFAULT_DBN = "/Users/arash/Qubitra/GC_202608/glbx-mdp3-20260812.mbp-1.dbn.zst"
+DEFAULT_DBN = "/... path to .dbn.zst file ..."
 DAY_NS = 86_400_000_000_000  # matplotlib measures bar width in days on a datetime axis
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("paths", nargs="*", default=[DEFAULT_DBN], help="mbp-1 .dbn.zst files")
+    parser.add_argument("path", default=DEFAULT_DBN, help="A single .dbn.zst file")
     parser.add_argument("--candle-min", type=float, default=5, help="candle width in minutes")
     parser.add_argument("--max-rows", type=int, default=None, help="read at most this many CSV rows")
-    parser.add_argument("--price-scale", type=float, default=1e-11,
-                        help="Databento fixed-point price scaling factor for this file")
+    parser.add_argument("--price-scale", type=float, default=1e-11, help="Databento fixed-point price scaling factor for this file")
     parser.add_argument("--out", default=None, help="save the figure here instead of showing it")
-    parser.add_argument("--dpi", type=int, default=1000, help="resolution when saving with --out")
+    parser.add_argument("--dpi", type=int, default=800, help="resolution when saving with --out")
     args = parser.parse_args(argv)
 
     candle_ns = int(args.candle_min * 60 * 10**9)
-
-    # gold_data = load_GLBX(args.path, max_rows=args.max_rows, PRICE_SCALE=args.price_scale)
-    # is_trade = gold_data["action"] == "T"
-    # ohlc = build_ohlc(gold_data["ts"][is_trade],
-    #                   gold_data["price"][is_trade],
-    #                   gold_data["size"][is_trade],
-    #                   bucket_ns=candle_ns)
-
-    # mid_data = build_mid(gold_data["ts"][is_trade],
-    #                      gold_data["price"][is_trade],
-    #                      bucket_ns=candle_ns)
     
-    trades = load_dbn_many(args.paths, trades_only=True)
-    print(f"{len(args.paths)} DBN file(s): {trades['ts'].size:,} trades")
+    gold_trades = load_dbn(args.path, most_traded=True)
+    print(f"{len(args.path)} DBN file(s): {gold_trades['ts'].size:,} trades")
 
-    front_id, front_symbol, n_front = most_traded_instrument(
-        trades["instrument_id"], trades["symbols"])
-    print(f"\nmost-traded instrument: {front_symbol} "
-          f"({n_front:,} of {trades['ts'].size:,} trades)")
-
-    is_front = trades["instrument_id"] == front_id
-    ohlc = build_ohlc(trades["ts"][is_front],
-                      trades["price"][is_front],
-                      trades["size"][is_front],
+    ohlc = build_ohlc(gold_trades["ts"],
+                      gold_trades["price"],
+                      gold_trades["size"],
                       bucket_ns=candle_ns)
 
+    gold_mid = build_mid(gold_trades['ts'], gold_trades['price'], bucket_ns=candle_ns)
+    
     lam = 1.e-3 * lambda_max(ohlc["close"])
 
-    med, mad = median_mad(ohlc["close"], window=int(len(ohlc["close"]) / 30))
+    med, mad = median_mad(ohlc["close"], window=int(len(ohlc["close"]) / 50))
     med_cyc = ohlc["close"] - med
     
     hp_trend, hp_cyc = hp_filter(ohlc["close"], lambda_param=1e+2 * lam)
@@ -87,8 +69,7 @@ def main(argv=None):
     ax_candle.set_ylabel("price ($)")
     ax_candle.set_title(f"{Path(args.path).stem} ({args.candle_min:g}min)", loc="right", y=0.9)
 
-    ax_price.plot(gold_data["ts"][is_trade].astype("datetime64[ns]"), gold_data["mid"][is_trade],
-                  label="Mid price", color="black", linewidth=0.35)
+    ax_price.plot(t_candle, gold_mid['mid'], label="Mid price", color="black", linewidth=0.35)
     ax_price.plot(t_candle, med, label="Rolling Median", color="tab:blue", linewidth=1.0)
     ax_price.plot(t_candle, hp_trend, label="HP-trend", color="tab:green", linewidth=1.0)
     ax_price.plot(t_candle, l1_trend, label="l1-trend", color="tab:red", linewidth=1.0)
