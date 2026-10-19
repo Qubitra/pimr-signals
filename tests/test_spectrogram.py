@@ -1,0 +1,1 @@
+"""Check spectrogram output and spectral forecast behavior."""
