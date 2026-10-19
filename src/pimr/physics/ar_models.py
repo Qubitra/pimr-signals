@@ -1,3 +1,5 @@
+"""Autoregressive model fitting and oscillatory-mode analysis."""
+
 import numpy as np
 
 def AR2(x):
