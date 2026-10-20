@@ -8,48 +8,59 @@ This is the first phase of the project to build a mean-reversion signal engine g
 ## Current repo structure
 ```
 src/
-├── pimr/                 the importable package
-│   ├── data/             market-data loaders + bar aggregation
-│   │   ├── glbx_csv.py   load_GLBX                      
-│   │   ├── bars.py       build_ohlc, build_mid          
-│   │   ├── dbn.py        load_dbn, load_dbn_many,       
-│   │   └── csv_io.py     save_csv, load_csv             
-│   ├── filters/
-│   │   ├── hp.py               hp_filter               
-│   │   ├── l1_trend.py         l1t_filter_cvxpy, lambda_max, linear_segment_lengths   
-│   │   ├── l1_trend_scipy.py   l1_trend_filter_scipy    
-│   │   └── rolling_median.py   rolling_median_mad       
-│   ├── indicators/
-│   │   ├── moving_averages.py  SMA, EMA, EMA_fast    
-│   │   └── rsi.py              gains_and_losses, RS, RSI, rsi
-│   │                                                   
-│   └── physics/
-│       └── oscillator.py       simulate, FE, BE, RK2   
-│
-├── scripts/              runnable demos (the old __main__ blocks), all argparse-based
-│   ├── plot_gold_candles.py    candles + mid line from a GLBX CSV
-│   ├── plot_dbn_candles.py     candles + L1 trend from DBN files
-│   ├── plot_rsi_strategy.py    RSI(2) SMA-vs-EMA strategy signals
-│   ├── plot_l1rsi_strategy.py  L1RSI2 strategy (trend bands + RSI + signals)
-│   ├── compare_filters.py      rolling median vs HP vs L1 side by side
-│   ├── plot_lambda_sweep.py    L1 trends for 0.33x..3x lambda
-│   ├── plot_segment_hist.py    L1 segment-length histogram over many days
-│   ├── demo_synthetic_book.py  random-walk book + rolling median/MAD
-│   └── demo_oscillator.py      solve_ivp vs FE/BE/RK2
-│
-└── experiments/          prototypes, not part of the package
-    ├── l1tf_interior_point.py  hand-rolled IPM L1 trend filter 
-    └── 
+└── pimr/                       the importable package
+    ├── data/                   market-data loaders + bar aggregation
+    │   ├── bars.py             build_ohlc, build_mid
+    │   ├── csv_io.py           save_csv, load_csv
+    │   └── dbn.py              load_dbn, load_dbn_many, most_traded_instrument  (Databento)
+    ├── filters/
+    │   ├── hp_filter.py        hp_filter
+    │   ├── l1t_filter.py       l1tf_cvxpy, lambda_max, l1_lengths
+    │   ├── l1tf_scipy.py       l1_trend_filter_scipy (not re-exported yet)
+    │   └── rolling_median.py   median_mad
+    ├── indicators/
+    │   ├── moving_averages.py  SMA, EMA, EMA_fast
+    │   └── rsi.py              gains_and_losses, RS, RSI, rsi
+    └── physics/
+        ├── oscillator.py       simulate, FE, BE, RK2
+        ├── ar_models.py        AR2, AR4, oscillatory_modes
+        └── spectrogram.py      spectrogram, spectral_forecast
+
+scripts/                        runnable demos, all argparse-based, run from repo root
+├── plot_compare_filters.py     rolling median vs HP vs L1 side by side
+├── plot_l1tf_strategy.py       L1 trend bands + RSI + signals
+└── plot_l1_segment_histograms.py   L1 segment-length histogram over many days
+
+tests/                          pytest (uv sync --extra dev)
+├── test_ar_models.py
+└── test_spectrogram.py
 ```
 
-## Running (in progress)
-Scripts insert `src/` on `sys.path` themselves, so from the repo root:
+
+## Installation (pre-release)
+
+`pimr` is not on PyPI yet, so install it from a clone of this repo. Requires Python 3.12+.
 
 ```sh
-.venv/bin/python src/scripts/demo_synthetic_book.py
-.venv/bin/python src/scripts/plot_dbn_candles.py /path/to/file.dbn.zst --candle-min 5
+git clone https://github.com/Qubitra/pimr-signals.git   # or git@github.com:Qubitra/pimr-signals.git
+cd pimr-signals
 ```
 
-Every script accepts `--help`. Data-driven scripts default to the local
-Databento paths used during development; pass the file path as the first
-argument to override.
+With [uv](https://docs.astral.sh/uv/) (recommended; it downloads a matching Python if you don't have one):
+
+```sh
+uv sync                # creates .venv/ with pimr + all dependencies
+uv sync --extra dev    # optional: also installs pytest
+```
+
+With plain pip (Python 3.12+ already installed):
+
+```sh
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+pip install -e ".[dev]"   # optional: also installs pytest
+```
+
+Both routes install `pimr` in editable mode, so edits under `src/pimr/` take effect
+immediately without reinstalling. 

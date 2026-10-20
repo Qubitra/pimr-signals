@@ -445,6 +445,15 @@ wheels = [
 ]
 
 [[package]]
+name = "iniconfig"
+version = "2.3.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/01/e1/2069291243c926a2ff1cd706c7f3eeb9b62144bf60f77c9fb9ff2fb26bd3/iniconfig-2.3.1.tar.gz", hash = "sha256:67f4b9c50da0dedf52af349e7749a80a9057a5031199791b906c3bb3ae878960", size = 21209, upload-time = "2026-10-06T22:48:38.076Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl", hash = "sha256:9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7", size = 7552, upload-time = "2026-10-06T22:48:36.959Z" },
+]
+
+[[package]]
 name = "ipykernel"
 version = "7.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -905,127 +914,6 @@ wheels = [
 ]
 
 [[package]]
-name = "physics-informed-mean-reversion"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "appnope" },
-    { name = "asttokens" },
-    { name = "cffi" },
-    { name = "clarabel" },
-    { name = "comm" },
-    { name = "contourpy" },
-    { name = "cvxopt" },
-    { name = "cvxpy" },
-    { name = "cycler" },
-    { name = "databento-dbn" },
-    { name = "debugpy" },
-    { name = "ecos" },
-    { name = "executing" },
-    { name = "fonttools" },
-    { name = "highspy" },
-    { name = "ipykernel" },
-    { name = "ipython" },
-    { name = "ipython-pygments-lexers" },
-    { name = "jedi" },
-    { name = "jinja2" },
-    { name = "joblib" },
-    { name = "jupyter-client" },
-    { name = "jupyter-core" },
-    { name = "kiwisolver" },
-    { name = "markupsafe" },
-    { name = "matplotlib" },
-    { name = "matplotlib-inline" },
-    { name = "nest-asyncio2" },
-    { name = "numpy" },
-    { name = "osqp" },
-    { name = "packaging" },
-    { name = "parso" },
-    { name = "pexpect" },
-    { name = "pillow" },
-    { name = "platformdirs" },
-    { name = "prompt-toolkit" },
-    { name = "psutil" },
-    { name = "ptyprocess" },
-    { name = "pure-eval" },
-    { name = "pycparser" },
-    { name = "pygments" },
-    { name = "pyparsing" },
-    { name = "python-dateutil" },
-    { name = "pyzmq" },
-    { name = "qdldl" },
-    { name = "scipy" },
-    { name = "scs" },
-    { name = "setuptools" },
-    { name = "six" },
-    { name = "sparsediffpy" },
-    { name = "stack-data" },
-    { name = "tornado" },
-    { name = "traitlets" },
-    { name = "typing-extensions" },
-    { name = "wcwidth" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "appnope", specifier = "==0.1.4" },
-    { name = "asttokens", specifier = "==3.0.2" },
-    { name = "cffi", specifier = "==2.1.0" },
-    { name = "clarabel", specifier = "==0.11.1" },
-    { name = "comm", specifier = "==0.2.3" },
-    { name = "contourpy", specifier = "==1.3.3" },
-    { name = "cvxopt", specifier = "==1.3.3" },
-    { name = "cvxpy", specifier = "==1.9.2" },
-    { name = "cycler", specifier = "==0.12.1" },
-    { name = "databento-dbn", specifier = "==0.66.0" },
-    { name = "debugpy", specifier = "==1.8.21" },
-    { name = "ecos", specifier = "==2.0.14" },
-    { name = "executing", specifier = "==2.2.1" },
-    { name = "fonttools", specifier = "==4.63.0" },
-    { name = "highspy", specifier = "==1.15.1" },
-    { name = "ipykernel", specifier = "==7.3.0" },
-    { name = "ipython", specifier = "==9.16.1" },
-    { name = "ipython-pygments-lexers", specifier = "==1.1.1" },
-    { name = "jedi", specifier = "==0.20.0" },
-    { name = "jinja2", specifier = "==3.1.6" },
-    { name = "joblib", specifier = "==1.5.3" },
-    { name = "jupyter-client", specifier = "==8.9.1" },
-    { name = "jupyter-core", specifier = "==5.9.1" },
-    { name = "kiwisolver", specifier = "==1.5.0" },
-    { name = "markupsafe", specifier = "==3.0.3" },
-    { name = "matplotlib", specifier = "==3.11.1" },
-    { name = "matplotlib-inline", specifier = "==0.2.2" },
-    { name = "nest-asyncio2", specifier = "==1.7.2" },
-    { name = "numpy", specifier = "==2.5.1" },
-    { name = "osqp", specifier = "==1.1.3" },
-    { name = "packaging", specifier = "==26.2" },
-    { name = "parso", specifier = "==0.8.7" },
-    { name = "pexpect", specifier = "==4.9.0" },
-    { name = "pillow", specifier = "==12.3.0" },
-    { name = "platformdirs", specifier = "==4.11.3" },
-    { name = "prompt-toolkit", specifier = "==3.0.53" },
-    { name = "psutil", specifier = "==7.2.2" },
-    { name = "ptyprocess", specifier = "==0.7.0" },
-    { name = "pure-eval", specifier = "==0.2.3" },
-    { name = "pycparser", specifier = "==3.0" },
-    { name = "pygments", specifier = "==2.20.0" },
-    { name = "pyparsing", specifier = "==3.3.2" },
-    { name = "python-dateutil", specifier = "==2.9.0.post0" },
-    { name = "pyzmq", specifier = "==27.1.0" },
-    { name = "qdldl", specifier = "==0.1.9.post1" },
-    { name = "scipy", specifier = "==1.18.0" },
-    { name = "scs", specifier = "==3.2.11" },
-    { name = "setuptools", specifier = "==83.0.0" },
-    { name = "six", specifier = "==1.17.0" },
-    { name = "sparsediffpy", specifier = "==0.3.0" },
-    { name = "stack-data", specifier = "==0.6.3" },
-    { name = "tornado", specifier = "==6.5.8" },
-    { name = "traitlets", specifier = "==5.15.1" },
-    { name = "typing-extensions", specifier = "==4.16.0" },
-    { name = "wcwidth", specifier = "==0.8.2" },
-]
-
-[[package]]
 name = "pillow"
 version = "12.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1097,12 +985,151 @@ wheels = [
 ]
 
 [[package]]
+name = "pimr"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "appnope" },
+    { name = "asttokens" },
+    { name = "cffi" },
+    { name = "clarabel" },
+    { name = "comm" },
+    { name = "contourpy" },
+    { name = "cvxopt" },
+    { name = "cvxpy" },
+    { name = "cycler" },
+    { name = "databento-dbn" },
+    { name = "debugpy" },
+    { name = "ecos" },
+    { name = "executing" },
+    { name = "fonttools" },
+    { name = "highspy" },
+    { name = "ipykernel" },
+    { name = "ipython" },
+    { name = "ipython-pygments-lexers" },
+    { name = "jedi" },
+    { name = "jinja2" },
+    { name = "joblib" },
+    { name = "jupyter-client" },
+    { name = "jupyter-core" },
+    { name = "kiwisolver" },
+    { name = "markupsafe" },
+    { name = "matplotlib" },
+    { name = "matplotlib-inline" },
+    { name = "nest-asyncio2" },
+    { name = "numpy" },
+    { name = "osqp" },
+    { name = "packaging" },
+    { name = "parso" },
+    { name = "pexpect" },
+    { name = "pillow" },
+    { name = "platformdirs" },
+    { name = "prompt-toolkit" },
+    { name = "psutil" },
+    { name = "ptyprocess" },
+    { name = "pure-eval" },
+    { name = "pycparser" },
+    { name = "pygments" },
+    { name = "pyparsing" },
+    { name = "python-dateutil" },
+    { name = "pyzmq" },
+    { name = "qdldl" },
+    { name = "scipy" },
+    { name = "scs" },
+    { name = "setuptools" },
+    { name = "six" },
+    { name = "sparsediffpy" },
+    { name = "stack-data" },
+    { name = "tornado" },
+    { name = "traitlets" },
+    { name = "typing-extensions" },
+    { name = "wcwidth" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "ipykernel" },
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "appnope", specifier = "==0.1.4" },
+    { name = "asttokens", specifier = "==3.0.2" },
+    { name = "cffi", specifier = "==2.1.0" },
+    { name = "clarabel", specifier = "==0.11.1" },
+    { name = "comm", specifier = "==0.2.3" },
+    { name = "contourpy", specifier = "==1.3.3" },
+    { name = "cvxopt", specifier = "==1.3.3" },
+    { name = "cvxpy", specifier = "==1.9.2" },
+    { name = "cycler", specifier = "==0.12.1" },
+    { name = "databento-dbn", specifier = "==0.66.0" },
+    { name = "debugpy", specifier = "==1.8.21" },
+    { name = "ecos", specifier = "==2.0.14" },
+    { name = "executing", specifier = "==2.2.1" },
+    { name = "fonttools", specifier = "==4.63.0" },
+    { name = "highspy", specifier = "==1.15.1" },
+    { name = "ipykernel", specifier = "==7.3.0" },
+    { name = "ipykernel", marker = "extra == 'dev'" },
+    { name = "ipython", specifier = "==9.16.1" },
+    { name = "ipython-pygments-lexers", specifier = "==1.1.1" },
+    { name = "jedi", specifier = "==0.20.0" },
+    { name = "jinja2", specifier = "==3.1.6" },
+    { name = "joblib", specifier = "==1.5.3" },
+    { name = "jupyter-client", specifier = "==8.9.1" },
+    { name = "jupyter-core", specifier = "==5.9.1" },
+    { name = "kiwisolver", specifier = "==1.5.0" },
+    { name = "markupsafe", specifier = "==3.0.3" },
+    { name = "matplotlib", specifier = "==3.11.1" },
+    { name = "matplotlib-inline", specifier = "==0.2.2" },
+    { name = "nest-asyncio2", specifier = "==1.7.2" },
+    { name = "numpy", specifier = "==2.5.1" },
+    { name = "osqp", specifier = "==1.1.3" },
+    { name = "packaging", specifier = "==26.2" },
+    { name = "parso", specifier = "==0.8.7" },
+    { name = "pexpect", specifier = "==4.9.0" },
+    { name = "pillow", specifier = "==12.3.0" },
+    { name = "platformdirs", specifier = "==4.11.3" },
+    { name = "prompt-toolkit", specifier = "==3.0.53" },
+    { name = "psutil", specifier = "==7.2.2" },
+    { name = "ptyprocess", specifier = "==0.7.0" },
+    { name = "pure-eval", specifier = "==0.2.3" },
+    { name = "pycparser", specifier = "==3.0" },
+    { name = "pygments", specifier = "==2.20.0" },
+    { name = "pyparsing", specifier = "==3.3.2" },
+    { name = "pytest", marker = "extra == 'dev'" },
+    { name = "python-dateutil", specifier = "==2.9.0.post0" },
+    { name = "pyzmq", specifier = "==27.1.0" },
+    { name = "qdldl", specifier = "==0.1.9.post1" },
+    { name = "scipy", specifier = "==1.18.0" },
+    { name = "scs", specifier = "==3.2.11" },
+    { name = "setuptools", specifier = "==83.0.0" },
+    { name = "six", specifier = "==1.17.0" },
+    { name = "sparsediffpy", specifier = "==0.3.0" },
+    { name = "stack-data", specifier = "==0.6.3" },
+    { name = "tornado", specifier = "==6.5.8" },
+    { name = "traitlets", specifier = "==5.15.1" },
+    { name = "typing-extensions", specifier = "==4.16.0" },
+    { name = "wcwidth", specifier = "==0.8.2" },
+]
+provides-extras = ["dev"]
+
+[[package]]
 name = "platformdirs"
 version = "4.11.3"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/b8/d7/e7bfbc86e9f99ff7807e24de7703f032e9c9ba80bb355cf26e0e9bc5a75e/platformdirs-4.11.3.tar.gz", hash = "sha256:66a73d38a849810252df809a3d8bcbda8e26f6c189920e7535ad608a48dbb5ab", size = 33050, upload-time = "2026-08-13T22:43:27.52Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/19/a9/c34aebedd3a4c9afe5101b1b8713710b3fec18087c8a36c35d2f909861bd/platformdirs-4.11.3-py3-none-any.whl", hash = "sha256:5ed065d443751de711da036041a7a214122efc4a4de393b3f4137ba5576540e7", size = 23491, upload-time = "2026-08-13T22:43:26.121Z" },
+]
+
+[[package]]
+name = "pluggy"
+version = "1.7.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bf/db/7fc19e6f2dc92a966727031389fc2e08b558f0f25eb7403c1119ad4713cd/pluggy-1.7.0.tar.gz", hash = "sha256:d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8", size = 123304, upload-time = "2026-10-15T09:50:58.343Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/40/9e/2b38731e0fc536806f16490e1a12d7f0dc2a1235aa8cc07bcc75416a7daa/pluggy-1.7.0-py3-none-any.whl", hash = "sha256:7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec", size = 27082, upload-time = "2026-10-15T09:50:56.808Z" },
 ]
 
 [[package]]
@@ -1188,6 +1215,22 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f3/91/9c6ee907786a473bf81c5f53cf703ba0957b23ab84c264080fb5a450416f/pyparsing-3.3.2.tar.gz", hash = "sha256:c777f4d763f140633dcb6d8a3eda953bf7a214dc4eff598413c070bcdc117cbc", size = 6851574, upload-time = "2026-01-21T03:57:59.36Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/10/bd/c038d7cc38edc1aa5bf91ab8068b63d4308c66c4c8bb3cbba7dfbc049f9c/pyparsing-3.3.2-py3-none-any.whl", hash = "sha256:850ba148bd908d7e2411587e247a1e4f0327839c40e2e5e6d05a007ecc69911d", size = 122781, upload-time = "2026-01-21T03:57:55.912Z" },
+]
+
+[[package]]
+name = "pytest"
+version = "9.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "iniconfig" },
+    { name = "packaging" },
+    { name = "pluggy" },
+    { name = "pygments" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e4/47/b9efed96c114afcfa3c9d3fe98a76a1d14c74a9e266d397cf6eb64be5e01/pytest-9.1.1.tar.gz", hash = "sha256:1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313", size = 1636369, upload-time = "2026-06-19T10:58:32.857Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl", hash = "sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c", size = 386536, upload-time = "2026-06-19T10:58:31.347Z" },
 ]
 
 [[package]]
