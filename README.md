@@ -46,20 +46,18 @@ git clone https://github.com/Qubitra/pimr-signals.git   # or git@github.com:Qubi
 cd pimr-signals
 ```
 
-With [uv](https://docs.astral.sh/uv/) (recommended; it downloads a matching Python if you don't have one):
-
+With [uv](https://docs.astral.sh/uv/) (recommended):
 ```sh
 uv sync                # creates .venv/ with pimr + all dependencies
 uv sync --extra dev    # optional: also installs pytest
 ```
 
 With plain pip (Python 3.12+ already installed):
-
 ```sh
 python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -e .
-pip install -e ".[dev]"   # optional: also installs pytest
+pip install -e ".[dev]"   # optional: installs pytest
 ```
 
 Both routes install `pimr` in editable mode, so edits under `src/pimr/` take effect
